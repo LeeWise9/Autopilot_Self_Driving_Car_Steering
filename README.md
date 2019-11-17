@@ -83,7 +83,6 @@ cmd中键入“ python drive.py model.json ”，随后模拟器中小车开始�
 
 
 这是我用最佳模型驱动小车录制的结果：<br>
-这是我训练20个epoch之后得到的误差下降曲线：<br>
 <p align="center">
 	<img src="https://github.com/LeeWise9/Img_repositories/blob/master/train_val_loss.jpg" alt="Sample"  width="400">
 </p>

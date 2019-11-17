@@ -35,13 +35,13 @@ The prediction of steering wheel angle of automatic driving, based on keras, run
 3.角度调整<br>
 4.数据剔除<br>
 
-为什么要水平翻转？数据集中如果右转弯样本远远多于左转弯样本将造成数据不平衡，翻转操作减小了数据不平衡现象；<br>
+为什么要水平翻转？如果右转弯样本远远多于左转弯样本，则数据不平衡，翻转操作减小了数据不平衡现象；<br>
 
 为什么要调整亮度？实践发现亮度变化会严重影响神经网络判断方向，调整图像亮度可以提高网络应对不同环境的鲁棒性；<br>
 
 角度调整是什么？当选取左侧或右侧摄像头画面时，需要将角度信息校准到车辆正前方，因此要做出角度调整；<br>
 
-剔除什么数据？经分析，数据集中大部分数据为直行（转动角为0），严重影响数据平衡，要按照一定比例对执行数据做删除。
+剔除什么数据？经分析，数据集中大部分数据为直行（转动角为0），严重影响数据平衡，要删除一部分。
 
 
 
@@ -51,12 +51,23 @@ The prediction of steering wheel angle of automatic driving, based on keras, run
 	<img src="https://github.com/LeeWise9/Img_repositories/blob/master/%E9%A9%BE%E9%A9%B6.png" alt="Sample"  width="400">
 </p>
 
-读者可以根据硬件情况，适量增加层数。需要注意的是，要根据误差下降曲线，适量增加防止过拟合措施。
+读者可以根据硬件情况，适量增加层数、通道数、神经元数量。需要注意的是，要根据误差下降曲线，适量增加防止过拟合措施。
 
 
+## 测试模型<br>
+测试模型要用到drive.py，这是一个python和模拟器的接口脚本。具体操作步骤如下：
 
+### Step1<br>
+安装socketio、eventlet等依赖库。
 
+### Step2<br>
+将模拟器和drive.py、model.json、model.h5放在同一个文件夹下。
 
+### Step3<br>
+检查计算机有足够的显存，运行模拟器，进入Autonomous模式。
+
+### Step4<br>
+cmd中键入“ python drive.py model.json ”，随后模拟器中小车开始飞奔。
 
 
 

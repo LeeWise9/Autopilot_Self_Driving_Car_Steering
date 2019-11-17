@@ -5,6 +5,8 @@ The prediction of steering wheel angle of automatic driving, based on keras, run
 
 自动驾驶中一个重要课题就是教会驾驶系统怎么甩盘子（方向盘），这就是驾驶方向预测。工业界主要有两种思路：传统计算或者神经网络，本项目介绍神经网络算法预测方向盘转动角度。
 
+
+## 数据<br>
 神经网络预测方向盘转动角度，输入端是道路车辆信息，输出端是方向盘转动角度。道路车辆信息可以由车载摄像头采集，方向盘转动角度可以由车载电子系统采集。当然还有更廉价的方式：借助一个[模拟器](https://pan.baidu.com/s/1--8NRXVMdeV-jMUoimg4Zg)（提取码：8jyr）。
 
 这是模拟器截图：<br>
@@ -28,6 +30,7 @@ The prediction of steering wheel angle of automatic driving, based on keras, run
 
 项目文件分为train.py和drive.py。前者用于训练神经网络，后者是模拟器的输入接口，用于测试训练好的模型效果。
 
+
 ## 图像预处理、数据增强<br>
 预处理包括以下几个方面：<br>
 1.水平翻转<br>
@@ -42,7 +45,6 @@ The prediction of steering wheel angle of automatic driving, based on keras, run
 角度调整是什么？当选取左侧或右侧摄像头画面时，需要将角度信息校准到车辆正前方，因此要做出角度调整；<br>
 
 剔除什么数据？经分析，数据集中大部分数据为直行（转动角为0），严重影响数据平衡，要删除一部分。
-
 
 
 ## 模型结构<br>
@@ -68,6 +70,12 @@ The prediction of steering wheel angle of automatic driving, based on keras, run
 
 ### Step4<br>
 cmd中键入“ python drive.py model.json ”，随后模拟器中小车开始飞奔。
+
+### Step5<br>
+选中模拟器窗口按Esc退出运行，关闭cmd窗口。
+
+
+
 
 
 

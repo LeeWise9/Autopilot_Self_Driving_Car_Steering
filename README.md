@@ -83,7 +83,9 @@ cmd中键入“ python drive.py model.json ”，随后模拟器中小车开始�
 
 
 这是用模型驱动小车录制的结果：<br>
-
+<p align="center">
+	<img src="https://github.com/LeeWise9/Img_repositories/blob/master/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6.gif" alt="Sample"  width="400">
+</p>
 
 这样开车可能要吃不少罚单吧 ╮(￣▽￣)╭
 

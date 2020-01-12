@@ -62,20 +62,15 @@ The prediction of steering wheel angle of automatic driving, based on keras, run
 ## 测试模型<br>
 测试模型要用到drive.py，这是一个python和模拟器的接口脚本。具体操作步骤如下：
 
-### Step1<br>
-安装socketio、eventlet等依赖库。
+* 1.安装socketio、eventlet等依赖库。
 
-### Step2<br>
-将模拟器和drive.py、model.json、model.h5放在同一个文件夹下。
+* 2.将模拟器和drive.py、model.json、model.h5放在同一个文件夹下。
 
-### Step3<br>
-检查计算机有足够的显存，运行模拟器，进入Autonomous模式。
+* 3.检查计算机有足够的显存，运行模拟器，进入Autonomous模式。
 
-### Step4<br>
-cmd中键入“ python drive.py model.json ”，随后模拟器中小车开始飞奔。
+* 4.cmd中键入“ python drive.py model.json ”，随后模拟器中小车开始飞奔。
 
-### Step5<br>
-选中模拟器窗口按Esc退出运行，关闭cmd窗口。
+* 5.选中模拟器窗口按Esc退出运行，关闭cmd窗口。
 
 
 ## 测试结果<br>
@@ -93,3 +88,12 @@ cmd中键入“ python drive.py model.json ”，随后模拟器中小车开始�
 车辆可以顺利从起点行驶到终点，但是行驶过程并不平稳，乘坐体验可能不佳。经过分析，网络存在一定的过拟合问题，需要削减模型参数数量。
 
 进一步的研究发现使用可分离卷积能够明显改善驾驶结果，同时减少一些计算量，[Using-EffNet-to-slim-models](https://github.com/LeeWise9/Using-EffNet-to-slim-models)。
+
+改进后的模型的驾驶效果更加平滑，弯道的反应速度更灵敏：<br>
+<p align="center">
+	<img src="https://github.com/LeeWise9/Img_repositories/raw/master/drive_eff.gif" alt="Sample"  width="400">
+</p>
+
+
+
+

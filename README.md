@@ -3,11 +3,14 @@
 
 The prediction of steering wheel angle of automatic driving, based on keras, runs on GPU.
 
-自动驾驶中一个重要课题就是教会驾驶系统怎么甩盘子（方向盘），这就是驾驶方向预测。工业界主要有两种思路：传统计算或者神经网络，本项目介绍神经网络算法预测方向盘转动角度。
+本项目尝试使用神经网络的方式预测自动驾驶汽车的方向盘转动角度。
 
+一般认为，车辆行驶的方向应为道路方向的切线方向，而车辆实际方向往往与切线方向有一定夹角。为了使车辆尽量沿着道路行驶，此时方向盘转动角度应使夹角角度减小。
+
+本项目基于一个驾驶模拟器，手动驾驶可保存驾驶时的车前录像和同时刻的方向盘角度，生成数据集；自动驾驶模式可与运行中的 Python 脚本交互，实现无人驾驶。
 
 ## 数据<br>
-神经网络预测方向盘转动角度，输入端是道路车辆信息，输出端是方向盘转动角度。道路车辆信息可以由车载摄像头采集，方向盘转动角度可以由车载电子系统采集。当然还有更廉价的方式：借助一个[模拟器](https://pan.baidu.com/s/1--8NRXVMdeV-jMUoimg4Zg)（提取码：8jyr）。
+神经网络预测方向盘转动角度，输入是车前录像，输出是方向盘转动角度，本质上是一个回归问题。道路车辆信息可以由车载摄像头采集，方向盘转动角度可以由车载电子系统采集。借助一个[模拟器](https://pan.baidu.com/s/1--8NRXVMdeV-jMUoimg4Zg)（提取码：8jyr）可以先研究清楚合适的神经网络架构。
 
 这是模拟器截图：<br>
 <p align="center">
@@ -33,10 +36,10 @@ The prediction of steering wheel angle of automatic driving, based on keras, run
 
 ## 图像预处理、数据增强<br>
 预处理包括以下几个方面：<br>
-1.水平翻转<br>
-2.亮度调整<br>
-3.角度调整<br>
-4.数据剔除<br>
+* 1.水平翻转<br>
+* 2.亮度调整<br>
+* 3.角度调整<br>
+* 4.数据剔除<br>
 
 为什么要水平翻转？如果右转弯样本远远多于左转弯样本，则数据不平衡，翻转操作减小了数据不平衡现象；<br>
 
@@ -87,5 +90,6 @@ cmd中键入“ python drive.py model.json ”，随后模拟器中小车开始�
 	<img src="https://github.com/LeeWise9/Img_repositories/blob/master/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6.gif" alt="Sample"  width="400">
 </p>
 
-这样开车可能要吃不少罚单吧 ╮(￣▽￣)╭
+车辆可以顺利从起点行驶到终点，但是行驶过程并不平稳，乘坐体验可能不佳。经过分析，网络存在一定的过拟合问题，需要削减模型参数数量。
 
+进一步的研究发现使用可分离卷积能够明显改善驾驶结果，同时减少一些计算量，[Using-EffNet-to-slim-models](https://github.com/LeeWise9/Using-EffNet-to-slim-models)。

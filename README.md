@@ -28,7 +28,7 @@ The prediction of steering wheel angle of automatic driving, based on keras, run
 </p>
 
 
-采集到的数据分为csv文件和IMG文件，csv文件是一个驾驶记录，包含了油门、方向、制动等信息，还存放了IMG文件的地址信息。IMG文件由虚拟的车载摄像头采集，分为左中右三个角度。用户可以手动模式采集数据（前提是要车技了得），也可以用[现成的](https://pan.baidu.com/s/1237GDUMxKOhhUxwqsixt7Q)（提取码：tlpa）。
+采集到的数据分为csv文件和IMG文件，csv文件是一个驾驶记录，包含了油门、方向、制动等信息，还存放了IMG文件的地址信息。IMG文件由虚拟的车载摄像头采集，分为左中右三个角度。用户可以手动模式采集数据（前提是要车技了得）。
 
 
 项目文件分为train.py和drive.py。前者用于训练神经网络，后者是模拟器的输入接口，用于测试训练好的模型效果。
